@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+  {{ country }}
+{% endblock title %}
+
+{% block mycss %}
+      body {
+        color: Gold;  
+        background-image: url('{% static "8.jpg" %}');
+        background-color: rgba(255,255,255,0.3);
+        background-blend-mode: lighten;
+        background-size: 1800px 900px;
+        background-repeat: no-repeat;
+        background-position: top;
+        background-attachment: fixed;
+        }
+      а {
+        text-decoration: none;
+        }
+      .menu_1 {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+        font-size: 2rem; 
+        -webkit-text-stroke-color: black; 
+        -webkit-text-stroke-width: 2px; 
+        color: transparent;
+        text-shadow: Brown 1px 1px 0;
+        padding-left: 40px;
+        <!-- text-shadow: Salmon 0px 0px 0, Salmon 1px 1px 0,  -->
+                 <!-- Salmon 1px 1px 0, Salmon 2px 2px 0,  -->
+                 <!-- Salmon 2px 2px 0; -->
+        }
+      .menu_2 {
+        font-size: 36px;
+        color: Maroon;
+        font-weight: 900;
+{% endblock mycss %}
+
+{% block content %}
+    <div>
+      <div class="menu_2" align='center' >
+        <h2>{{ country }}</h2>
+      </div>
+      <div class="menu_2" align='center'>
+        <h4>Список маршрутов по пивоварням</h4>
+      </div>
+      </table><table cellpadding=10>
+      {% for route in routes %}
+        <tr>
+          <td><a href="{{ route.url_1 }}" style="text-decoration: none;"><h3 class="menu_1">{{ route }}</h3></a></td>
+        </tr>
+      {% endfor %}
+      </table>
+    </div>
+{% endblock content %}
