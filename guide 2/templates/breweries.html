@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+  Пивоварни
+{% endblock title %}
+{% block mycss %}
+      body {
+        font-size: 22px;
+        color: Gold;
+        font-weight: 900;        
+        background-image: url('{% static "7.jpg" %}');
+        background-color: rgba(255,255,255,0.2);
+        background-blend-mode: lighten;
+        background-size: 1800px 900px;
+        background-repeat: no-repeat;
+        background-position: top;
+        background-attachment: fixed;
+        }
+      .menu2 {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+        font-size: 2rem; 
+        -webkit-text-stroke-color: Maroon; 
+        -webkit-text-stroke-width: 2px; 
+        color: transparent;
+        text-shadow: red 1px 1px 0;
+        padding-left: 60px;
+        }
+        .menu_2 {
+        font-size: 36px;
+        color: Maroon;
+        font-weight: 900;
+        }
+      .register__btn{
+        width: 300px;
+        height: 45px;
+        border: none;
+        border-radius: 5px;
+        background-color: OrangeRed;
+        display: block;
+        margin-left: auto;
+        font-size: 22px;
+        font-weight: 900; 
+        }
+{% endblock mycss %}
+
+{% block content %}
+    <div class="menu_2" align='center'>
+      <h4>Список пивоварен</h4>
+    </div>
+    <button class="register__btn" type="submit"><a href="add_brewery">Добавить пивоварню</a></button>
+    <div>
+      <table cellpadding=15>
+        {% for brewery in breweries %}
+          <tr>
+            <td><a href="brewery/{{ brewery.url }}"><h2 class="menu2">{{ brewery }}</h2></a></td>
+          </tr>
+        {% endfor %}
+      </table>
+    </div>
+{% endblock content %}
