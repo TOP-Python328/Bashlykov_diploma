@@ -1,10 +1,12 @@
 from django.db import models
 from transliterate import translit
 
+# ну что за бардак с импортами...
 from functools import cached_property
 import random
 from random import randint
 import uuid
+
 
 def uuid_url():
     return uuid.uuid4()
@@ -22,7 +24,12 @@ class Route(models.Model):
     base_city = models.CharField(max_length=50)
     bus = models.CharField(max_length=50, blank=True)
     description= models.CharField(max_length=500, blank=True)
-    url_r = models.CharField(max_length=100, default=uuid_url(), editable=False)
+    
+    url_r = models.UUIDField(default=uuid.uuid4, editable=False)
+    
+    # это логическая ошибка, потому что вы хотите, чтобы для каждого поля генерировался новый uuid, а для этого в default необходимо передавать сам вызываемый объект, а не его возвращаемое значение
+    # url_r = models.CharField(max_length=100, default=uuid_url(), editable=False)
+    
     # или так пробовал:
     # url_r = models.UUIDField(default=uuid.uuid4, unique= True, editable=False)
     

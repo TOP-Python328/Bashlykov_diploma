@@ -6,20 +6,20 @@ from catalog.forms import (
     AddСountryForm, 
     
 )
-routes_name = {
-    translit(route.name, 'ru', reversed=True).lower(): route
-    for route in Route.objects.all()
-}
-
-countries_name = {
-    translit(country.name, 'ru', reversed=True).lower(): country
-    for country in Сountry.objects.all()
-}
-
-breweries_name = {
-    translit(brewery.title, 'ru', reversed=True).lower(): brewery
-    for brewery in Brewery.objects.all()
-}
+# routes_name = {
+#     translit(route.name, 'ru', reversed=True).lower(): route
+#     for route in Route.objects.all()
+# }
+# 
+# countries_name = {
+#     translit(country.name, 'ru', reversed=True).lower(): country
+#     for country in Сountry.objects.all()
+# }
+# 
+# breweries_name = {
+#     translit(brewery.title, 'ru', reversed=True).lower(): brewery
+#     for brewery in Brewery.objects.all()
+# }
 
 def main(request):
     return render(
