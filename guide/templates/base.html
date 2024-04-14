@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      {% block title %}
+      {% endblock title %}
+    </title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}"/>
+    <style>
+      {% block mycss %}
+        body { 
+          background-image: url('{% static "2.jpg" %}');
+          background-size: 1800px 900px;
+          background-repeat: no-repeat;
+          background-position: top;
+          background-attachment: fixed;
+          height: 100%;
+        }
+      {% endblock mycss %}
+    </style>
+    {% block extra_head %}
+    {% endblock extra_head %}
+  </head>
+  <body>
+    <header>
+      {% block header %}
+        <h1 class="menu_1">Путеводитель по историческим пивоварням Германии и Европы</h1>
+      {% endblock header %}
+    </header>
+    <div id="wrapper">
+      {% block content %}    
+      {% endblock content %}
+      <div>
+        {% block extra_content %}
+        {% endblock extra_content %}
+      </div>
+    </div>   
+    <div class="footer">
+      <footer class="footer-distributed">
+          <p class="footer-links">
+            <a href="{% url 'main' %}">Home</a>
+                ·
+            <a href="#">About</a>
+                ·
+            <a href="#">Contact</a>
+          </p>
+          <h6 class="footer-company-name">Все права защищены © 2024</h6>
+      </footer>
+    </div>
+  </body>
+</html>

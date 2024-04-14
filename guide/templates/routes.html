@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+  Список маршрутов
+{% endblock title %}
+
+{% block mycss %} 
+  body {       
+    background-image: url('{% static "4.jpg" %}');
+    background-color: rgba(255,255,255,0.2);
+    background-blend-mode: lighten;
+    background-size: 1800px 900px;
+    background-repeat: no-repeat;
+    background-position: top;
+    background-attachment: fixed;
+    height: 100%;
+}
+{% endblock mycss %}
+
+{% block content %}
+    <div class="register__btn5">
+      <h3>Перечень маршрутов </h3>
+    </div>
+    <div class="button_left">
+      <button class="register__btn4" type="submit"><a href="add_route" class="button_link">Добавить маршрут</a></button>
+    </div>
+    <div class="menu_3">
+      <table>
+        {% for route in routes %}
+          <tr>
+            <td><a href="{% url 'route' route.url %}"><h2 class="menu2">{{ route }}</h2></a></td>
+          </tr>
+        {% endfor %}
+      </table>
+    </div>
+{% endblock content %}

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+  Страны
+{% endblock title %}
+{% block mycss %}
+      body {      
+        background-image: url('{% static "13.jpg" %}');
+        background-color: rgba(255,255,255,0.2);
+        background-blend-mode: lighten;
+        background-size: 1800px 900px;
+        background-repeat: no-repeat;
+        background-position: top;
+        background-attachment: fixed;
+        }
+{% endblock mycss %}
+
+{% block content %}
+    <div class="menu_2" align='center'>
+      <h4>Список стран</h4>
+    </div>
+    <div class="button_left">
+      <button class="register__btn4" type="button"><a href="add_country" class="button_link">Добавить страну</a></button>
+    </div>
+    <div>
+      <table>
+        {% for country in countries %}
+          <tr>
+            <td><a href="{% url 'country' country.url %}"><h2 class="menu2">{{ country }}</h2></a></td>
+          </tr>
+        {% endfor %}
+      </table>
+    </div>
+{% endblock content %}

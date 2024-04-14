@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+  Главная
+{% endblock title %}
+
+
+{% block content %}
+    <div>
+      {% if user.is_authenticated %}
+      <td>{{ user.username }}, <a href="{% url 'user_logout' %}">выход</a></td>
+      {% else %}
+    </div>
+    <div>
+      <td><a href="{% url 'user_login' %}">вход</a></td>
+      {% endif %}   
+      <div class="menu_left">
+        <a href="{% url 'routes' %}" style="text-decoration: none;"><button class="register__btn1">Маршруты</button></a>
+      </div>
+      <div class="menu_center">
+        <a href="{% url 'countries' %}" style="text-decoration: none;"><button class="register__btn1">Страны</button></a>
+      </div>
+      <div class="menu_right">
+        <a href="{% url 'breweries' %}" style="text-decoration: none;"><button class="register__btn1">Пивоварни</button></a>
+      </div>
+    </div>        
+{% endblock content %}

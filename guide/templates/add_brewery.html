@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+  Добавление пивоварни
+{% endblock title %}
+
+{% block mycss %} 
+  body {
+      color: Maroon;  
+      background-image: url('{% static "2.jpg" %}');
+      background-size: 1800px 900px;
+      background-repeat: no-repeat;
+      background-position: top;
+      background-attachment: fixed;
+      font-size: 19px;
+      text-decoration: underline;
+      }
+{% endblock mycss %}
+
+{% block content %}
+  <div class="register__btn5"'>
+    <h3>Добавить пивоварню</h3>
+  </div>
+  <div>
+    {% if added %}
+      <h6>Данные добавлены успешно</h6>
+    {% endif %}
+  </div>
+  <div>
+    {% if double %}
+      <h6>Такая пивоварня уже есть в списке </h6>
+    {% endif %}
+  </div>
+  <br>
+  <div align="center">
+    <form action="" method="post">
+      {% csrf_token %}
+      <table cellpadding=5>
+        <tr>
+          <th>
+            <label for="id_title">Название:</label>
+          </th>
+          <td>
+            <input type="text" name='title' id="id_title" placeholder="название" required>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            <label for="id_address">Адрес:</label>
+          </th>
+          <td>
+            <input type="text" name='address' id="id_address" placeholder="адрес" required>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            <label for="id_working_hours">Часы работы:</label>
+          </th>
+          <td>
+            <input type="text" name='working_hours' id="id_working_hours" placeholder="часы работы" required>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            <label for="id_link">Электронный адрес:</label>
+          </th>
+          <td>
+            <input type="text" name='link' id="id_link" placeholder="электронный адрес" required>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            <label for="id_description">Описание:</label>
+          </th>
+          <td>
+            <input type="text" name='description' id="id_description" placeholder="описание" required>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            <label for="id_country">Название страны:</label>
+          </th>
+          <td>
+            <select name="country_id" id="id_country" required>
+              <option disabled selected></option>
+              {% for country in countries %}
+                <option value="{{ country.id }}">{{ country }}</option>
+              {% endfor %}
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            <label for="id_route">Название маршрута:</label>
+          </th>
+          <td>
+            <select name="route_id" id="id_route" required>
+              <option disabled selected></option>
+              {% for route in routes %}
+                <option value="{{ route.id }}">{{ route }}</option>
+              {% endfor %}
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td colspan=2 align="center">     
+            <!-- <input type="submit" value="Добавить"> -->
+            <button class="register__btn2" type="submit">Добавить</button>
+            <button class="register__btn2" type="reset">Отмена</button>
+          </td>
+        </tr> 
+      </table>
+    </form>
+  </div>
+{% endblock content %}
+
