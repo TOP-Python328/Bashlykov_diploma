@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+  {{ brewery }}
+{% endblock title %}
+
+{% block mycss %} 
+  body {
+    color: SaddleBrown;  
+    background-image: url('{% static "bus.avif" %}');
+    background-color: rgba(255,255,255,0.4);
+    background-blend-mode: lighten;
+    background-size: 1800px 900px;
+    background-repeat: no-repeat;
+    background-position: top;
+    background-attachment: fixed;
+    }
+{% endblock mycss %}
+ 
+{% block content %}>
+    <div class="text_brewery">
+      <h1>{{ route.bus }}</h1>
+    </div>
+{% endblock content %}
+
+    
+

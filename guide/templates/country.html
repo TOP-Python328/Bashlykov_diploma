@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+  {{ country }}
+{% endblock title %}
+
+{% block mycss %}
+      body {
+        color: Gold;  
+        background-image: url('{% static "8.jpg" %}');
+        background-color: rgba(255,255,255,0.3);
+        background-blend-mode: lighten;
+        background-size: 1800px 900px;
+        background-repeat: no-repeat;
+        background-position: top;
+        background-attachment: fixed;
+        }
+{% endblock mycss %}
+
+{% block content %}
+      <div class="register__btn5">
+        <h1>{{ country }}</h1>
+      </div>
+      <div class="register__btn6">
+        <h2>Список маршрутов по пивоварням</h2>
+      </div>
+      </table><table cellpadding=10>
+      {% for route in routes %}
+        <tr>
+          <td><a href="{{ route.get_absolute_url }}" style="text-decoration: none;"><h2 class="menu2">{{ route }}</h2></a></td>
+        </tr>
+      {% endfor %}
+      </table>
+    </div>
+{% endblock content %}

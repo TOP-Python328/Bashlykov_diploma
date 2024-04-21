@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+  {{ brewery }}
+{% endblock title %}
+
+{% block mycss %} 
+  body {
+    color: SaddleBrown;  
+    background-image: url('{% static "1.jpg" %}');
+    background-color: rgba(255,255,255,0.4);
+    background-blend-mode: lighten;
+    background-size: 1800px 900px;
+    background-repeat: no-repeat;
+    background-position: top;
+    background-attachment: fixed;
+    }
+{% endblock mycss %}
+ 
+{% block content %}>
+    <div class="register__btn5">
+      <h1>&laquo{{ route }}&raquo</h1>
+    </div>
+    <div class="text_brewery1">
+      <h4>{{ route.description }}</h4>
+    <div class="brewery">  
+      <img src="{{ route.image_city.url }}" width ='900'>
+    </div>
+{% endblock content %}
+
+    
+

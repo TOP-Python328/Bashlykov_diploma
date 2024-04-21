@@ -1,0 +1,77 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      {% block title %}
+        Главная
+      {% endblock title %}
+    </title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}"/>
+    <style>
+      {% block mycss %}
+        body { 
+          background-image: url('{% static "2.jpg" %}');
+          background-size: 1800px 900px;
+          background-repeat: no-repeat;
+          background-position: top;
+          background-attachment: fixed;
+          height: 100%;
+        }
+      {% endblock mycss %}
+    </style>
+    <body>
+      <div id="wrapper">
+        <header>
+          {% block header %}
+            <h1 class="menu_1">Путеводитель по историческим пивоварням Германии и Европы</h1>
+          {% endblock header %}
+        </header>
+        <div>
+          {% block content %}
+              <div class="parent">
+                  <div class="parent1">
+                   <a href="{% url 'routes' %}" style="text-decoration: none;"><button class="register__btn1">Маршруты</button></a>
+                  </div>
+                  <div class="parent2">
+                   <a href="{% url 'countries' %}" style="text-decoration: none;"><button class="register__btn1">Страны</button></a>
+                  </div>
+                  <div class="parent2">
+                   <a href="{% url 'breweries' %}" style="text-decoration: none;"><button class="register__btn1">Пивоварни</button></a>
+                  </div>
+                  <div class="parent3">
+                     {% if user.is_authenticated %}
+                       <ul>
+                         <li><button class="register__btn11">{{ user.username }}</button></li> 
+                         <li><h1>|</h1></li>
+                         <li><a href="{% url 'user_logout' %}" style="text-decoration: none;"><button class="register__btn12">выход</button></a></li>
+                       </ul>
+                     {% else %}
+                         <li><a href="{% url 'user_register' %}" style="text-decoration: none;"><button class="register__btn11">регистрация</button></a>
+                         <li><h1>|</h1></li>
+                         <li><a href="{% url 'user_login' %}" style="text-decoration: none;"><button class="register__btn12">вход</button></a>
+                     {% endif %}
+                  </div>
+              </div
+          {% endblock content %}
+        </div> 
+        <div class="footer">
+          <footer class="footer-distributed">
+              <p class="footer-links">
+                <a href="{% url 'main' %}">Home</a>
+                    ·
+                <a href="#">About</a>
+                    ·
+                <a href="#">Contact</a>
+              </p>
+              <h6 class="footer-company-name">Все права защищены © 2024</h6>
+          </footer>
+        </div>
+      </div>
+    </body>
+</html>
+
+
+    
